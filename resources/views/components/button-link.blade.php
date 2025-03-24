@@ -3,7 +3,7 @@
     'icon' => null,
     'bgClass' => 'bg-white',
     'hoverClass' => 'hover:bg-green-800 hover:text-white',
-    'textClass' => 'text-green-700 font-bold border-2 border-green-700',
+    'textClass' => 'text-green-700 text-sm font-bold border-2 border-green-700',
     'block' => false
 ])
 

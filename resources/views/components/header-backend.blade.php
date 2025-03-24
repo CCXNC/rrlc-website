@@ -7,24 +7,31 @@
             <img src="/storage/logos/rrlc_logo.png" alt="">
         </a>
         <nav class="hidden md:flex tracking-wide items-center space-x-4 font-poppins">
-            <x-nav-link url="/" :active="request()->is('/')">Home</x-nav-link>
-            
-            <div class="relative group">
-                <x-nav-link class="cursor-pointer">Our Products</x-nav-link>
-                <div class="absolute hidden group-hover:block bg-white shadow-lg p-5 mt-1 text-sm w-60 tracking-wide">
-                    <a href="{{route('animalhealth')}}" class="font-bold hover:underline block pb-1">Animal Health</a>
-                    <a href="{{route('animalnutrition')}}" class="font-bold hover:underline block pb-1">Animal Nutrition</a>
-                    <a href="{{route('tolling')}}" class="font-bold hover:underline block pb-1">Tolling Services</a>
-                    <a href="{{route('rawmats')}}" class="font-bold hover:underline block pb-1">Raw Materials</a>
+            <x-nav-link url="{{route('dashboard.home')}}">Home</x-nav-link>
+            @auth
+                <div class="relative group">
+                    <x-nav-link class="cursor-pointer">Our Products</x-nav-link>
+                    <div class="absolute hidden group-hover:block bg-white shadow-lg p-5 mt-1 text-sm w-60 tracking-wide">
+                        <a href="{{route('animalhealth')}}" class="font-bold hover:underline block pb-1">Animal Health</a>
+                        <a href="{{route('animalnutrition')}}" class="font-bold hover:underline block pb-1">Animal Nutrition</a>
+                        <a href="{{route('tolling')}}" class="font-bold hover:underline block pb-1">Tolling Services</a>
+                        <a href="{{route('rawmats')}}" class="font-bold hover:underline block pb-1">Raw Materials</a>
+                    </div>
                 </div>
-            </div>
-            
-            <x-nav-link url="{{route('technicalservices')}}" :active="request()->is('technicalservices')">Technical Services</x-nav-link>
-            <!--<x-nav-link url="/articles" :active="request()->is('articles')">Article</x-nav-link>-->
-            <x-nav-link url="{{route('newsletter')}}" :active="request()->is('newsletter')">Newsletter</x-nav-link>
-            <x-nav-link url="{{route('aboutus')}}" :active="request()->is('aboutus')">About Us</x-nav-link>
-            <x-nav-link url="{{route('careers')}}" :active="request()->is('careers')">Career</x-nav-link>
-            <x-button-link url="{{route('contactus')}}" :active="request()->is('contactus')" icon="fa fa-pills">Contact Us</x-button-link>
+         
+                <x-nav-link url="{{route('technicalservices')}}" :active="request()->is('technicalservices')">Technical Services</x-nav-link>
+                <!--<x-nav-link url="/articles" :active="request()->is('articles')">Article</x-nav-link>-->
+                <x-nav-link url="{{route('newsletter')}}" :active="request()->is('newsletter')">Newsletter</x-nav-link>
+                <x-nav-link url="{{route('aboutus')}}" :active="request()->is('aboutus')">About Us</x-nav-link>
+                <x-nav-link url="{{route('careers')}}" :active="request()->is('careers')">Career</x-nav-link>
+                <form method="POST" action="{{route('logout')}}">
+                    @csrf
+                    <button type="submit" class="block text-green-700 text-sm font-bold">
+                    <i class="fa fa-sign-out"></i> Logout
+                    </button>
+                </form>
+            @else       
+            @endauth
         </nav>
         <button id="hamburger" class="text-green-800 md:hidden flex items-center">
             <i class="fa fa-bars text-2xl"></i>

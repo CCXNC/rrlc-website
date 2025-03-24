@@ -14,7 +14,7 @@
     </a>
 
 @else
-    <a href="{{$url}}" class="font-bold hover:underline py-2">
+    <a href="{{$url}}" class="text-sm font-bold hover:underline py-2">
     @if($icon)
         <i class="fa fa-{{$icon}} mr-1"></i>
     @endif

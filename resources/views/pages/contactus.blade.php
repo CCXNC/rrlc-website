@@ -61,8 +61,8 @@
     </section>
     
 
-     <!-- Section Top body Grid Card -->
-     <section id="topgridcard" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-y-5 justify-items-center bg-green-700 text-white">
+    <!-- Section Top body Grid Card -->
+    <section id="topgridcard" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-y-5 justify-items-center bg-green-700 text-white">
 
         <!-- Card 1 -->
         
@@ -83,31 +83,39 @@
             </p>    
         
         </div>
-        
-        <!-- Card 2 -->
-        <div class="md:border-slate-200 flex flex-col items-left text-left p-5">
+      
+        <!-- Subscribe Now Section -->
+        <div class="p-10 text-center flex flex-col items-center">
+            <h3 class="text-lg font-bold mb-4">Subscribe Now</h3>
+            <p class="text-sm">Subscribe to our newsletter to get notified about our articles and exclusive offers!</p>
 
-            <!-- Title -->
-            <h3 class="p-4 font-bold text-lg">FIND US ON FACEBOOK</h3>
-        
-            <!-- Logo -->
-            <div class="w-auto h-auto shadow-black shadow-md">
-                <img src="storage/images/rrlc_fb.png" alt="Refamed Logo" class="w-auto h-[200px]">
+            <!-- Subscribe Button -->
+            <a href="https://snowqueencel.beehiiv.com/subscribe" target="_blank" 
+            class="mt-4 px-6 py-2 bg-green-800 hover:bg-green-900 text-white font-semibold rounded flex items-center justify-center space-x-2 w-40">
+                <span>Subscribe</span>
+                <span>🔔</span>
+            </a>
+
+            <!-- Social Media Icons -->
+            <div class="flex justify-left items-center mt-5 space-x-3">
+                <!-- Facebook Icon -->
+                <a href="https://www.facebook.com" target="_blank" 
+                class="w-10 h-10 bg-blue-600 text-white flex items-center justify-center rounded-full text-2xl hover:bg-blue-800">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <!-- LinkedIn Icon -->
+                <a href="https://www.linkedin.com" target="_blank" 
+                class="w-10 h-10 bg-blue-600 text-white flex items-center justify-center rounded-full text-2xl hover:bg-blue-800">
+                <i class="fab fa-linkedin-in"></i>
+                </a>
             </div>
-        
-          
-        
         </div>
-       
-       
+            
+
+      
     </section>
-    <section id="copyright" class="bg-green-700 text-white">
-        <div class="border w-12/12 mx-auto"></div>
-        <div class="flex flex-col md:flex-row md:justify-between md:items-center p-3 space-y-4 md:space-y-0 text-center md:text-left">
-            <div>&copy; Copyright 2025. All Rights Reserved</div>
+          <!-- Copyright Section -->
+          <div class="bg-green-800 text-white text-center text-sm py-4">
+            Copyright &copy; 2025 by Refamed Researched Laboratory Corporation Since 1999. All rights reserved
         </div>
-    </section>
-  
-
-
 </x-layout> 

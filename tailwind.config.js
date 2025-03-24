@@ -13,6 +13,8 @@ export default {
         extend: {
             fontFamily: {
                 titillium: ['"Titillium Web"', 'sans-serif'], // Add Titillium Web
+                poppins: ['Poppins', 'sans-serif'], // Add Poppins font // Add Titillium Web
+                jost: ["Jost", "sans-serif"],
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },

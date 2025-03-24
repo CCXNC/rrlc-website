@@ -1,48 +1,110 @@
 <x-layout title="Home Page">
-
-    <!-- SLIDER 
-    <section id="" class="w-full">
-        <div x-data="{ activeSlide: 0, slides: ['slide1.jpg', 'slide2.jpg', 'slide3.jpg'], autoSlide() { setInterval(() => { this.next(); }, 3000); }, next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length; }, prev() { this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length; } }" x-init="autoSlide()" class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-lg">
-            <div class="relative w-full h-64">
+    
+    <!-- SLIDER IMAGE SECTION -->
+    <section class="w-full h-[250px] md:h-[400px] lg:h-[425px] !mt-0 mb-2 !pt-0 !pb-0 !bg-transparent">
+        <div 
+            x-data="{ 
+                activeSlide: 0, 
+                slides: ['storage/newsarticle/header1.jpg', 'storage/newsarticle/article22.jpg'], 
+                autoSlide() { setInterval(() => { this.next(); }, 5000); }, 
+                next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length; }, 
+                prev() { this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length; } 
+            }" 
+            x-init="autoSlide()" 
+            class="relative w-full h-full mx-auto overflow-hidden !bg-transparent"
+        >
+            <!-- Slider Container -->
+            <div class="relative w-full h-full flex items-center justify-center">
                 <template x-for="(slide, index) in slides" :key="index">
                     <div x-show="activeSlide === index" class="absolute inset-0 flex items-center justify-center transition-opacity duration-700">
                         <img :src="slide" class="w-full h-full object-cover" alt="Carousel Slide">
                     </div>
                 </template>
             </div>
-            
-            <button @click="prev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+
+            <!-- Previous Button -->
+            <button @click="prev" 
+                class="absolute top-1/2 left-2 md:left-4 transform -translate-y-1/2 bg-gray-600 bg-opacity-50 text-white p-3 md:p-4 rounded-full hover:bg-gray-800 transition">
                 &#10094;
             </button>
-            <button @click="next" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+
+            <!-- Next Button -->
+            <button @click="next" 
+                class="absolute top-1/2 right-2 md:right-4 transform -translate-y-1/2 bg-gray-600 bg-opacity-50 text-white p-3 md:p-4 rounded-full hover:bg-gray-800 transition">
                 &#10095;
             </button>
-            
-            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <button @click="activeSlide = index" class="w-3 h-3 rounded-full" :class="activeSlide === index ? 'bg-white' : 'bg-gray-500'"></button>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS SECTION -->
+    <section class="w-full h-full bg-green-700 text-white flex flex-col justify-center items-center py-10">
+        <h2 class="text-3xl font-bold font-poppins text-center mb-8">FEATURED PRODUCTS</h2>
+        <div 
+            x-data="{ 
+                activeSlide: 0, 
+                slides: [
+                    [ { img: 'storage/ourproducts/wsp/amoxin.png', name: 'AMOXIN', link: '{{route('animalhealth')}}' }, 
+                    { img: 'storage/ourproducts/wsp/biotrol.png', name: 'BIOTROL', link: '{{route('animalhealth')}}' }, 
+                    { img: 'storage/ourproducts/wsp/cetrolyte.png', name: 'CETROLYTE', link: '{{route('animalhealth')}}' } 
+                    ],
+                    [ { img: 'storage/ourproducts/wsp/REVITASOL.png', name: 'REVITASOL', link: '{{route('animalhealth')}}' }, 
+                    { img: 'storage/ourproducts/wsp/PYRIQUIN.png', name: 'PYRIQUIN', link: '{{route('animalhealth')}}' }, 
+                    { img: 'storage/ourproducts/wsp/STRESOL.png', name: 'STRESOL', link: '{{route('animalhealth')}}' } 
+                    ]
+                ],
+                next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length; }, 
+                prev() { this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length; }
+            }" 
+            class="relative flex items-center justify-center w-full overflow-hidden px-4"
+        >
+            <!-- Previous Button -->
+            <button @click="prev" 
+                class="absolute left-4 bg-white text-green-800 p-4 rounded-full opacity-80 hover:bg-gray-300 z-10">
+                &#10094;
+            </button>
+
+            <!-- Product Slides -->
+            <div class="w-full flex justify-center">
+                <template x-for="(slideGroup, index) in slides" :key="index">
+                    <div x-show="activeSlide === index" class="flex flex-wrap justify-center gap-20 md:gap-36 items-center"> 
+                        <template x-for="(slide, subIndex) in slideGroup" :key="subIndex">
+                            <div class="flex flex-col items-center justify-center">
+                                <a :href="slide.link" class="sm:w-64 sm:h-64 w-48 h-48 bg-white rounded-full flex items-center justify-center shadow-lg"> 
+                                    <img :src="slide.img" class="sm:w-64 sm:h-64 w-40 h-40 object-contain" alt="Product"> 
+                                </a>
+                                <p class="mt-6 mb-5 text-center font-poppins font-bold text-xl text-white">
+                                    <a :href="slide.link" x-text="slide.name" class="hover:underline"></a>
+                                </p>
+                            </div>
+                        </template>
+                    </div>
                 </template>
             </div>
-        </div>
 
+            <!-- Next Button -->
+            <button @click="next" 
+                class="absolute right-4 bg-white text-green-800 p-4 rounded-full opacity-80 hover:bg-gray-300 z-10">
+                &#10095;
+            </button>
+        </div>
     </section>
-    -->
-    
-    <!-- Page Banner Head Section-->
-   
+
+
+    <!-- Page Banner Head Section
+
     <section  class=" bg-gray-200 w-full flex justify-center ">
-        <!-- Banner Image -->
+    
         <div style="background-image: url('storage/images/cetrolyte.png');" class="bg-[size:70%] bg-no-repeat size-60 md:size-80 flex-shrink-0"></div>
-        <!-- Banner Text and Button -->
-         <div class=" my-5 p-3 max-w-2xl">
+    
+        <div class=" my-5 p-3 max-w-2xl">
             <h1 class="font-bold text-3xl md:text-5xl">Selling is what we do best at Lorem Ipsum</h1>
             <p class="mt-3 tex-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque ut, veniam reprehenderit ducimus libero.</p>
             <button class="px-4 py-2 border-2 text-green-700 font-bold border-green-700 rounded-lg w-full m-3 hover:bg-green-700 mt-7 md:mt-14 hover:text-white hover:border-green-700">Explore</button>
-         </div>
+        </div>
         
-    </section>
+    </section>-->
 
-    <!-- Section Top body Grid Card -->
+    <!-- About RRLC & Video -->
     <section id="topgridcard" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-y-5 justify-items-center">
 
         <!-- Card 1 -->
@@ -64,59 +126,63 @@
     
     </section>
 
-         <!-- Technology Section -->
-         <section id="technology" class="flex justify-center px-4">
-            <div class="bg-green-700 w-full text-center text-white p-6 rounded-lg">
-                <!-- Card 1 -->
-                <div class="p-4 pb-10 border-slate-200">
-                    <h3 class="text-2xl font-bold my-2 tracking-wide">We are Certified Company</h3>
-                    <p class="mb-4">True to its vision, REFAMED, being a 100% Filipino owned company has passed these certifications making its products globally competitive.</p>
-                    <div class="bg-white p-7 rounded-lg flex flex-wrap justify-center items-center gap-7">
-                        <img src="storage/logos/bai_logo.png" alt="" class="h-20 w-22">
-                        <img src="storage/logos/fda.png" alt="" class="h-20 w-auto">
-                        <img src="storage/logos/iso-sgs.png" alt="" class="h-20 w-auto">
-                    </div>
+    <!-- Article Section -->
+    <section id="productservice">
+        <h1 class="p-4 font-poppins font-bold text-center text-3xl text-green-800">Recent Articles</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-3 space-y-10 md:space-y-0 md:space-x-5 p-4">
+            <!-- Card 1 -->
+            <div class="rounded-lg shadow-lg border">
+                <img src="storage/images/images/111.jpg" alt="REFAMED joins Philippine Poultry Show" class="bg-cover h-60 w-full rounded-t-lg">
+                <div class="p-3">
+                    <h3 class="text-xl font-semibold">REFAMED joins 2019 Philippine Poultry Show</h3>
+                    <p class="text-gray-700 text-sm">REFAMED Research Laboratory had joined the biggest and the largest poultry event in the Philippines. The Philippine Poultry Show and Fiestag 2019 was held last August 23-25, 2019, at the SMX Convention Center, Mall of Asia, Pasay City.</p>
+                    <button class="border border-orange-600 hover:bg-orange-100 bg-white px-4 py-1 rounded-lg mx-5 my-7">See more</button>
                 </div>
             </div>
-        </section>
-        
-
-        <!-- Section Product and Services -->
-        <section id="productservice">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-14 space-y-10 md:space-y-0 md:space-x-5 px-10 md:px-20">
-                <!-- Card 1 -->
-                <div class="rounded-lg shadow-lg border">
-                    <img src="storage/images/images/111.jpg" alt="REFAMED joins Philippine Poultry Show" class="bg-cover h-60 w-full rounded-t-lg">
-                    <div class="p-3">
-                        <h3 class="text-xl font-semibold">REFAMED joins 2019 Philippine Poultry Show</h3>
-                        <p class="text-gray-700 text-sm">REFAMED Research Laboratory had joined the biggest and the largest poultry event in the Philippines. The Philippine Poultry Show and Fiestag 2019 was held last August 23-25, 2019, at the SMX Convention Center, Mall of Asia, Pasay City.</p>
-                        <button class="border border-orange-600 hover:bg-orange-100 bg-white px-4 py-1 rounded-lg mx-5 my-7">See more</button>
-                    </div>
-                </div>
-                
-                <!-- Card 2 -->
-                <div class="rounded-lg shadow-lg border">
-                    <img src="storage/images/images/222.jpg" alt="REFAMED joins Philippine Poultry Show" class="bg-cover h-60 w-full rounded-t-lg">
-                    <div class="p-3">
-                        <h3 class="text-xl font-semibold">REFAMED joins 2024 Philippine Poultry Show</h3>
-                        <p class="text-gray-700 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium molestias impedit iure maiores, similique esse consectetur, hic labore itaque omnis delectus? Commodi, provident culpa ut facilis libero voluptas tempora dolor exercitationem eius, numquam eum quas inventore voluptatum quasi cupiditate!</p>
-                        <button class="border border-orange-600 hover:bg-orange-100 bg-white px-4 py-1 rounded-lg mx-5 my-7">See more</button>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="rounded-lg shadow-lg border">
-                    <img src="storage/images/images/333.jpg" alt="REFAMED joins Philippine Poultry Show" class="bg-cover h-60 w-full rounded-t-lg">
-                    <div class="p-3">
-                        <h3 class="text-xl font-semibold">REFAMED joins 2025 Philippine Poultry Show</h3>
-                        <p class="text-gray-700 text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor unde quibusdam omnis. Voluptas nulla accusamus, quae fugiat eligendi iure, sunt pariatur dolores earum eum sed cum quasi facilis ipsam, labore illum. Natus, incidunt voluptatibus. Voluptatum et voluptas consectetur. Odio tempora odit deserunt perferendis nesciunt quod inventore reiciendis molestias ipsam aliquid.</p>
-                        <button class="border border-orange-600 hover:bg-orange-100 bg-white px-4 py-1 rounded-lg mx-5 my-7">See more</button>
-                    </div>
+            
+            <!-- Card 2 -->
+            <div class="rounded-lg shadow-lg border">
+                <img src="storage/images/images/222.jpg" alt="REFAMED joins Philippine Poultry Show" class="bg-cover h-60 w-full rounded-t-lg">
+                <div class="p-3">
+                    <h3 class="text-xl font-semibold">REFAMED joins 2024 Philippine Poultry Show</h3>
+                    <p class="text-gray-700 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium molestias impedit iure maiores, similique esse consectetur, hic labore itaque omnis delectus? Commodi, provident culpa ut facilis libero voluptas tempora dolor exercitationem eius, numquam eum quas inventore voluptatum quasi cupiditate!</p>
+                    <button class="border border-orange-600 hover:bg-orange-100 bg-white px-4 py-1 rounded-lg mx-5 my-7">See more</button>
                 </div>
             </div>
 
-        </section>
+            <!-- Card 2 -->
+            <div class="rounded-lg shadow-lg border">
+                <img src="storage/images/images/333.jpg" alt="REFAMED joins Philippine Poultry Show" class="bg-cover h-60 w-full rounded-t-lg">
+                <div class="p-3">
+                    <h3 class="text-xl font-semibold">REFAMED joins 2025 Philippine Poultry Show</h3>
+                    <p class="text-gray-700 text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor unde quibusdam omnis. Voluptas nulla accusamus, quae fugiat eligendi iure, sunt pariatur dolores earum eum sed cum quasi facilis ipsam, labore illum. Natus, incidunt voluptatibus. Voluptatum et voluptas consectetur. Odio tempora odit deserunt perferendis nesciunt quod inventore reiciendis molestias ipsam aliquid.</p>
+                    <button class="border border-orange-600 hover:bg-orange-100 bg-white px-4 py-1 rounded-lg mx-5 my-7">See more</button>
+                </div>
+            </div>
+        </div>
 
+    </section>
+
+     <!-- Careers -->
+     <section id="topgridcard" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-y-5 justify-items-center">
+
+        <!-- Card 1 -->
+            <div class="p-4 pb-10 md:border-slate-200 ">
+               <img src="storage/images/employees.jpg" class="w-[500px]" alt="">
+            </div>
+        <!-- Card 2 -->
+        <div class="p-4 pb-10 md:border-slate-200 ">
+            <p class="text-justify p-5"><h3 class="font-bold text-2xl tracking-wide my-2 text-green-700">Careers at Refamed</h3>
+                Join our team of engaged and purpose-driven employees, and learn how you can make a difference at Refamed.            
+            </p>    
+
+            <div class="px-6 py-4 border-t text-right">
+                <a href="{{route('careers')}}"class="border-2 border-green-700 text-green-700 font-bold px-5 py-2 hover:bg-green-700 rounded hover:text-white"> Read About Careers</a>
+            </div>
+        </div>
+    
+    </section>
+
+    
 </x-layout> 
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> -->

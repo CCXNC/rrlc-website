@@ -1,14 +1,13 @@
 <x-layout title="Our Products">
   <section
     class="relative bg-cover bg-center bg-no-repeat h-50 flex items-center"
-    style="background-image: url('storage/images/bcraw.jpg');">
-  <!-- Dark Overlay -->
-  <div class="absolute inset-0 bg-green-700 bg-opacity-80"></div>
-    <div class="container mx-auto text-left z-0 p-12">
-        <h2 class="text-4xl md:text-5xl text-white font-bold">
-            Products
-        </h2>
-      
+      style="background-image: url('storage/images/bcraw.jpg');">
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-green-700 bg-opacity-80"></div>
+      <div class="container mx-auto text-left z-0 p-12">
+          <h2 class="text-4xl md:text-5xl text-white font-bold">
+              Products
+          </h2>
     </div>
   </section>
 

@@ -15,13 +15,19 @@
     <title>{{$title ?? 'Default Website'}}</title>
 </head>
 <body class="bg-gray-100">
-    <x-header />
-    <main class="container mx-auto">
-        {{$slot}} 
-
-        @if(!request()->is('contactus'))
-            <x-footer />
+    <x-header-backend />
+    <main class="container mx-auto pt-5">
+        @if(session('success'))
+            <x-alert type="success" message="{{session('success')}}" />
         @endif
+        @if(session('error'))
+            <x-alert type="error" message="{{session('error')}}" />
+        @endif
+        {{$slot}} 
+      
+       
+        <x-footer-backend />
+       
      
     </main>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> 

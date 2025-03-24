@@ -15,12 +15,37 @@ class HomeController extends Controller
 
     public function contactus(): View
     {
-        return view('pages.contactus');
+        return view('pages.contactus'); 
     }
 
-    public function ourproducts(): View
+    public function animalhealth(): View
     {
-        return view('pages.ourproducts');
+        return view('pages.ourproducts.animalhealth');
+    }
+
+    public function animalnutrition1(): View
+    {
+        return view('pages.ourproducts.animalnutrition1');
+    }
+
+    public function animalnutrition(): View
+    {
+        return view('pages.ourproducts.animalnutrition');
+    }
+
+    public function tolling(): View
+    {
+        return view('pages.ourproducts.tolling');
+    }
+
+    public function rawmats(): View
+    {
+        return view('pages.ourproducts.rawmats');
+    }
+
+    public function showproduct(): View
+    {
+        return view('pages.ourproducts.show');
     }
 
     public function technicalservices(): View
@@ -42,4 +67,21 @@ class HomeController extends Controller
     {
         return view('pages.aboutus');
     }
+
+    public function newsletter(): View
+    {
+        return view('pages.newsletter');
+    }
+
+    public function careers(): View
+    {
+        return view('pages.careers');
+    }
+
+    public function careerform(): View
+    {
+        return view('pages.careerform');
+    }
+
+  
 }
